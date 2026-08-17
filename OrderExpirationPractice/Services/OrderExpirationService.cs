@@ -1,4 +1,6 @@
 ﻿
+using OrderExpirationPractice.Data;
+
 namespace OrderExpirationPractice.Services
 {
     public class OrderExpirationService : BackgroundService
@@ -14,6 +16,11 @@ namespace OrderExpirationPractice.Services
                 TimeSpan.FromSeconds(10));
             while (await timer.WaitForNextTickAsync(stoppingToken))
             {
+                using var scope = _scopeFactory.CreateScope();
+
+                var context = scope.ServiceProvider
+                    .GetRequiredService<AppDbContext>();
+
                 // check orders
             }
         }
