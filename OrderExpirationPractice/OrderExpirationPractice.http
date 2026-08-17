@@ -1,0 +1,6 @@
+@OrderExpirationPractice_HostAddress = http://localhost:5007
+
+GET {{OrderExpirationPractice_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
